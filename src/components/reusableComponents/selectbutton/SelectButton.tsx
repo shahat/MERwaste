@@ -15,7 +15,7 @@ const SelectButton: React.FC<ButtonProps> = ({  onClick, selected , id  }) => {
     >
       <span>{selected ? "Selected" : "Select your skip"}</span>
       {!selected && (
-      <svg
+        <span className="flex items-center">  <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
@@ -29,7 +29,8 @@ const SelectButton: React.FC<ButtonProps> = ({  onClick, selected , id  }) => {
       >
         <path d="M5 12h14"></path>
         <path d="m12 5 7 7-7 7"></path>
-      </svg>
+      </svg></span>
+    
       )}
     </button>
   );

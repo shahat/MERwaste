@@ -14,7 +14,7 @@ const NavBar: React.FC<NavBarProps> = ({ size, price, duration }) => {
   } 
   const { nextStep, prevStep } = skipContext;
   return (
-    <footer className="fixed bottom-0 left-0 right-0 bg-[#1C1C1C] border-t border-[#2A2A2A] p-4 animate-slideUp z-50">
+    <section className="fixed bottom-0 left-0 right-0 bg-[#1C1C1C] border-t border-[#2A2A2A] p-4 animate-slideUp z-50">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-4">
         {/* Info Section */}
         <section className="flex items-center gap-6">
@@ -43,7 +43,7 @@ const NavBar: React.FC<NavBarProps> = ({ size, price, duration }) => {
           />
         </section>
       </div>
-    </footer>
+    </section>
   );
 };
 
