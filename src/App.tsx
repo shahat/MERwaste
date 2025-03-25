@@ -9,9 +9,8 @@ function App() {
   if (!skipContext) {
     throw new Error("SkipList must be used within a SkipProvider");
   }
-  const { skips, loading,  selectedCardId  } = skipContext;
+  const { skips,   selectedCardId  } = skipContext;
   const selectedSkip: SkipData | undefined = skips.find((skip) => skip.id === selectedCardId);
-  if (loading) return <div>Loading...</div>;
   
   return (
     <>

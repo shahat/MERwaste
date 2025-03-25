@@ -1,13 +1,30 @@
 import StepsBar from "../../components/stepsBar/stepsBar";
-import SkipCard from '../../components/skipCard/SkipCard';
+import SkipCard from "../../components/skipCard/SkipCard";
+import Loading from "../../components/loading/Loading";
 import { SkipContext } from "../../context/SkipContext";
 import { use } from "react";
 export default function GardenSkipsPage() {
- const skipContext = use(SkipContext);
+  const skipContext = use(SkipContext);
   if (!skipContext) {
     throw new Error("SkipList must be used within a SkipProvider");
-  } 
-  const { skips , selectedCardId, selectCard } = skipContext;
+  }
+  const { skips, loading, selectedCardId, selectCard } = skipContext;
+
+  const content = loading ? (
+    <Loading />
+  ) : (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+      {skips?.map((skip) => (
+        <SkipCard
+          key={skip.size}
+          data={skip}
+          selectCard={selectCard}
+          selectedCardId={selectedCardId}
+        />
+      ))}
+    </div>
+  );
+
   return (
     <>
       <StepsBar />
@@ -18,11 +35,7 @@ export default function GardenSkipsPage() {
         <p className="text-gray-400 text-center mb-8">
           Select the skip size that best suits your needs
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          {skips?.map((skip) => (
-            <SkipCard key={skip.size} data={skip} selectCard={selectCard} selectedCardId={selectedCardId}  />
-          ))}
-        </div>
+        {content}
       </div>
     </>
   );
